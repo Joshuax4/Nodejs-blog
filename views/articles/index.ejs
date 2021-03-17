@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog</title>
+</head>
+<body> <!-- Container is padding around page, mb-4 is that we want a margin of 4-->
+    <div class="container"> 
+        <h1 class="mb-4">Josh's Blog Posts
+        </h1>
+        <a href="/articles/new" class="btn btn-success">New Article</a>
+        <!--This creates a button using bootstrap called 'new article, going to link'-->
+
+    <% articles.forEach(article => { %><!--For loop in js-->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title"><%= article.title %></h4>
+                <div class="card-subtitle text-muted mb-2">
+                    <%= article.createdAt.toLocaleDateString() %> 
+                    <!--Above code converts date to a recognisable format-->
+                </div>
+
+                <!--Text-muted gives greyish coulour on screen-->
+                <div class="card-text mb-2"><%= article.description %></div>
+                <a href="articles/<%= article.slug %>"class="btn btn-primary">Read More</a>
+                <!--Code here is what allows editing of articles using ID from models-->
+                
+
+                <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form><!--NOT WORKING-->
+
+
+            </div>
+        </div>
+    <% }) %> 
+    </div> 
+</body>
+</html>
