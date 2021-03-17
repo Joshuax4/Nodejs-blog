@@ -9,3 +9,5 @@ Dependencies:
 - method-override $npm i method-override
 
 MongoDB host: localhost:27017
+
+***SCREENSHOTS INCLUDED IF YOU DO NOT WISH TO RUN SOURCE FILES***
